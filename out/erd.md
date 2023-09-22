@@ -1,0 +1,55 @@
+<!--
+
+classDiagram
+class fact_orders{
+   *INTEGER id NOT NULL
+   TIMESTAMP created
+   INTEGER dim_customer_id
+   INTEGER dim_discount_type_id
+   INTEGER dim_product_id
+   TIMESTAMP last_updated
+   DECIMAL sale_amount
+   DATE sale_date
+   DECIMAL sale_qty
+}
+class fact_customer_relations{
+   *INTEGER id NOT NULL
+   TIMESTAMP created
+   INTEGER dim_customer_id
+   DATE encounter_date
+   TEXT encounter_notes
+   BOOLEAN is_repeat_customer
+   TIMESTAMP last_updated
+}
+class dim_customer{
+   *INTEGER id NOT NULL
+   VARCHAR<100> address
+   VARCHAR<100> city
+   VARCHAR<100> country
+   TIMESTAMP created
+   VARCHAR<50> first_name
+   VARCHAR<50> last_name
+   TIMESTAMP last_updated
+   VARCHAR<10> middle_initial
+   VARCHAR<100> state
+}
+class dim_discount_type{
+   *INTEGER id NOT NULL
+   TIMESTAMP created
+   TIMESTAMP last_updated
+   VARCHAR<20> name
+}
+class dim_product{
+   *INTEGER id NOT NULL
+   TIMESTAMP created
+   TEXT description_long
+   TIMESTAMP last_updated
+   VARCHAR<100> name
+}
+dim_product "0..1" -- "0..n" fact_orders
+dim_customer "0..1" -- "0..n" fact_orders
+dim_discount_type "0..1" -- "0..n" fact_orders
+dim_customer "0..1" -- "0..n" fact_customer_relations
+
+-->
+![](https://mermaid.ink/img/Y2xhc3NEaWFncmFtCmNsYXNzIGZhY3Rfb3JkZXJzewogICAqSU5URUdFUiBpZCBOT1QgTlVMTAogICBUSU1FU1RBTVAgY3JlYXRlZAogICBJTlRFR0VSIGRpbV9jdXN0b21lcl9pZAogICBJTlRFR0VSIGRpbV9kaXNjb3VudF90eXBlX2lkCiAgIElOVEVHRVIgZGltX3Byb2R1Y3RfaWQKICAgVElNRVNUQU1QIGxhc3RfdXBkYXRlZAogICBERUNJTUFMIHNhbGVfYW1vdW50CiAgIERBVEUgc2FsZV9kYXRlCiAgIERFQ0lNQUwgc2FsZV9xdHkKfQpjbGFzcyBmYWN0X2N1c3RvbWVyX3JlbGF0aW9uc3sKICAgKklOVEVHRVIgaWQgTk9UIE5VTEwKICAgVElNRVNUQU1QIGNyZWF0ZWQKICAgSU5URUdFUiBkaW1fY3VzdG9tZXJfaWQKICAgREFURSBlbmNvdW50ZXJfZGF0ZQogICBURVhUIGVuY291bnRlcl9ub3RlcwogICBCT09MRUFOIGlzX3JlcGVhdF9jdXN0b21lcgogICBUSU1FU1RBTVAgbGFzdF91cGRhdGVkCn0KY2xhc3MgZGltX2N1c3RvbWVyewogICAqSU5URUdFUiBpZCBOT1QgTlVMTAogICBWQVJDSEFSPDEwMD4gYWRkcmVzcwogICBWQVJDSEFSPDEwMD4gY2l0eQogICBWQVJDSEFSPDEwMD4gY291bnRyeQogICBUSU1FU1RBTVAgY3JlYXRlZAogICBWQVJDSEFSPDUwPiBmaXJzdF9uYW1lCiAgIFZBUkNIQVI8NTA-IGxhc3RfbmFtZQogICBUSU1FU1RBTVAgbGFzdF91cGRhdGVkCiAgIFZBUkNIQVI8MTA-IG1pZGRsZV9pbml0aWFsCiAgIFZBUkNIQVI8MTAwPiBzdGF0ZQp9CmNsYXNzIGRpbV9kaXNjb3VudF90eXBlewogICAqSU5URUdFUiBpZCBOT1QgTlVMTAogICBUSU1FU1RBTVAgY3JlYXRlZAogICBUSU1FU1RBTVAgbGFzdF91cGRhdGVkCiAgIFZBUkNIQVI8MjA-IG5hbWUKfQpjbGFzcyBkaW1fcHJvZHVjdHsKICAgKklOVEVHRVIgaWQgTk9UIE5VTEwKICAgVElNRVNUQU1QIGNyZWF0ZWQKICAgVEVYVCBkZXNjcmlwdGlvbl9sb25nCiAgIFRJTUVTVEFNUCBsYXN0X3VwZGF0ZWQKICAgVkFSQ0hBUjwxMDA-IG5hbWUKfQpkaW1fcHJvZHVjdCAiMC4uMSIgLS0gIjAuLm4iIGZhY3Rfb3JkZXJzCmRpbV9jdXN0b21lciAiMC4uMSIgLS0gIjAuLm4iIGZhY3Rfb3JkZXJzCmRpbV9kaXNjb3VudF90eXBlICIwLi4xIiAtLSAiMC4ubiIgZmFjdF9vcmRlcnMKZGltX2N1c3RvbWVyICIwLi4xIiAtLSAiMC4ubiIgZmFjdF9jdXN0b21lcl9yZWxhdGlvbnM=)

@@ -1,0 +1,44 @@
+[fact_orders]
+    *id {label:"INTEGER"}
+    created {label:"TIMESTAMP"}
+    dim_customer_id {label:"INTEGER"}
+    dim_discount_type_id {label:"INTEGER"}
+    dim_product_id {label:"INTEGER"}
+    last_updated {label:"TIMESTAMP"}
+    sale_amount {label:"DECIMAL"}
+    sale_date {label:"DATE"}
+    sale_qty {label:"DECIMAL"}
+[fact_customer_relations]
+    *id {label:"INTEGER"}
+    created {label:"TIMESTAMP"}
+    dim_customer_id {label:"INTEGER"}
+    encounter_date {label:"DATE"}
+    encounter_notes {label:"TEXT"}
+    is_repeat_customer {label:"BOOLEAN"}
+    last_updated {label:"TIMESTAMP"}
+[dim_customer]
+    *id {label:"INTEGER"}
+    address {label:"VARCHAR(100)"}
+    city {label:"VARCHAR(100)"}
+    country {label:"VARCHAR(100)"}
+    created {label:"TIMESTAMP"}
+    first_name {label:"VARCHAR(50)"}
+    last_name {label:"VARCHAR(50)"}
+    last_updated {label:"TIMESTAMP"}
+    middle_initial {label:"VARCHAR(10)"}
+    state {label:"VARCHAR(100)"}
+[dim_discount_type]
+    *id {label:"INTEGER"}
+    created {label:"TIMESTAMP"}
+    last_updated {label:"TIMESTAMP"}
+    name {label:"VARCHAR(20)"}
+[dim_product]
+    *id {label:"INTEGER"}
+    created {label:"TIMESTAMP"}
+    description_long {label:"TEXT"}
+    last_updated {label:"TIMESTAMP"}
+    name {label:"VARCHAR(100)"}
+dim_product ?--* fact_orders
+dim_customer ?--* fact_orders
+dim_discount_type ?--* fact_orders
+dim_customer ?--* fact_customer_relations

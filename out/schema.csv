@@ -1,0 +1,36 @@
+table_name,column.name,column.type,column.primary_key,column.foreign_keys,column.nullable,column_comment,table_comment
+fact_orders,id,INTEGER,True,,False,Unique ID. Primary key.,Order transactions table to caputure the event of a product sale and measures like purchase price amount.
+fact_orders,created,TIMESTAMP,False,,True,Datetime stamp for when the record was created.,Order transactions table to caputure the event of a product sale and measures like purchase price amount.
+fact_orders,last_updated,TIMESTAMP,False,,True,Datetime stamp for when the record was last updated.,Order transactions table to caputure the event of a product sale and measures like purchase price amount.
+fact_orders,dim_customer_id,INTEGER,False,dim_customer.id,True,Customer ID for joining to customer dimensions.,Order transactions table to caputure the event of a product sale and measures like purchase price amount.
+fact_orders,dim_product_id,INTEGER,False,dim_product.id,True,Product ID for joining to Product dimensions.,Order transactions table to caputure the event of a product sale and measures like purchase price amount.
+fact_orders,dim_discount_type_id,INTEGER,False,dim_discount_type.id,True,Discount type ID for joining to discount description dimension.,Order transactions table to caputure the event of a product sale and measures like purchase price amount.
+fact_orders,sale_date,DATE,False,,True,Date of sale.,Order transactions table to caputure the event of a product sale and measures like purchase price amount.
+fact_orders,sale_qty,DECIMAL,False,,True,Sale quantity.,Order transactions table to caputure the event of a product sale and measures like purchase price amount.
+fact_orders,sale_amount,DECIMAL,False,,True,Purchase price amount.,Order transactions table to caputure the event of a product sale and measures like purchase price amount.
+fact_customer_relations,id,INTEGER,True,,False,Unique ID. Primary key.,Track customer relation encounters and notes. An individual customer may have multiple notes and encounters.
+fact_customer_relations,created,TIMESTAMP,False,,True,Datetime stamp for when the record was created.,Track customer relation encounters and notes. An individual customer may have multiple notes and encounters.
+fact_customer_relations,last_updated,TIMESTAMP,False,,True,Datetime stamp for when the record was last updated.,Track customer relation encounters and notes. An individual customer may have multiple notes and encounters.
+fact_customer_relations,dim_customer_id,INTEGER,False,dim_customer.id,True,Customer ID for joining to customer dimension.,Track customer relation encounters and notes. An individual customer may have multiple notes and encounters.
+fact_customer_relations,encounter_date,DATE,False,,True,Date of customer encounter.,Track customer relation encounters and notes. An individual customer may have multiple notes and encounters.
+fact_customer_relations,encounter_notes,TEXT,False,,True,Notes for a given encounter with a customer.,Track customer relation encounters and notes. An individual customer may have multiple notes and encounters.
+fact_customer_relations,is_repeat_customer,BOOLEAN,False,,True,"True if customer is a repeat customer. Otherwise, False.",Track customer relation encounters and notes. An individual customer may have multiple notes and encounters.
+dim_customer,id,INTEGER,True,,False,Unique ID. Primary key.,Customer dimension table.
+dim_customer,created,TIMESTAMP,False,,True,Datetime stamp for when the record was created.,Customer dimension table.
+dim_customer,last_updated,TIMESTAMP,False,,True,Datetime stamp for when the record was last updated.,Customer dimension table.
+dim_customer,first_name,VARCHAR(50),False,,True,Customer first name.,Customer dimension table.
+dim_customer,last_name,VARCHAR(50),False,,True,Customer last name.,Customer dimension table.
+dim_customer,middle_initial,VARCHAR(10),False,,True,Customer middle initial.,Customer dimension table.
+dim_customer,address,VARCHAR(100),False,,True,Customer street address.,Customer dimension table.
+dim_customer,city,VARCHAR(100),False,,True,Customer address city.,Customer dimension table.
+dim_customer,state,VARCHAR(100),False,,True,Customer address state.,Customer dimension table.
+dim_customer,country,VARCHAR(100),False,,True,Customer address country.,Customer dimension table.
+dim_discount_type,id,INTEGER,True,,False,Unique ID. Primary key.,Discount type mapping table.
+dim_discount_type,created,TIMESTAMP,False,,True,Datetime stamp for when the record was created.,Discount type mapping table.
+dim_discount_type,last_updated,TIMESTAMP,False,,True,Datetime stamp for when the record was last updated.,Discount type mapping table.
+dim_discount_type,name,VARCHAR(20),False,,True,"Description of discount type. Constrained to N/A,EndofYear,Repeat Customer,Senior Citizen.",Discount type mapping table.
+dim_product,id,INTEGER,True,,False,Unique ID. Primary key.,Directory listing of Products.
+dim_product,created,TIMESTAMP,False,,True,Datetime stamp for when the record was created.,Directory listing of Products.
+dim_product,last_updated,TIMESTAMP,False,,True,Datetime stamp for when the record was last updated.,Directory listing of Products.
+dim_product,name,VARCHAR(100),False,,True,Product name (short description).,Directory listing of Products.
+dim_product,description_long,TEXT,False,,True,Product long description.,Directory listing of Products.
